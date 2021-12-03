@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Coding Cafe on 7/18/2018.
  */
 
-public class GetNearbyPlaces extends AsyncTask<Object, String, String>
+public class FindFirst extends AsyncTask<Object, String, String>
 {
     private String googleplaceData, url;
     private GoogleMap mMap;
@@ -52,14 +52,13 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String>
         try {
             JSONObject parentObject = new JSONObject(s);
             JSONArray resultsArray = parentObject.getJSONArray("results");
-            for (int i = 0; i < resultsArray.length(); i++) {
-                JSONObject jsonObject = resultsArray.getJSONObject(i);
+                JSONObject jsonObject = resultsArray.getJSONObject(0);
                 JSONObject locationObj = jsonObject.getJSONObject("geometry").getJSONObject("location");
 
                 String lat = locationObj.getString("lat");
                 String lng = locationObj.getString("lng");
 
-                JSONObject nameObj = resultsArray.getJSONObject(i);
+                JSONObject nameObj = resultsArray.getJSONObject(0);
 
                 String name = nameObj.getString("name");
 
@@ -71,8 +70,6 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String>
 
                 mMap.addMarker(markerOptions);
 
-
-            }
         } catch (JSONException e) {
 
         }

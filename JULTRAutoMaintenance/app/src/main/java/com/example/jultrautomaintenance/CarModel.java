@@ -11,6 +11,7 @@ public class CarModel {
         Owner = owner;
         Year = year;
     }
+    public CarModel(){}
 
     public String getModel() {
         return Model;

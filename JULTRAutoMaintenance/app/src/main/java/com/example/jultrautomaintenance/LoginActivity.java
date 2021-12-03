@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,12 +49,19 @@ public class LoginActivity extends AppCompatActivity {
             email.requestFocus();
             return;
         }
+        if(!Patterns.EMAIL_ADDRESS.matcher(emailText).matches())
+        {
+            email.setError("Enter valid email!");
+            email.requestFocus();
+            return;
+        }
         if (passwordText.isEmpty())
         {
             password.setError("Password cannot be empty!");
             password.requestFocus();
             return;
         }
+
         mAuth.signInWithEmailAndPassword(emailText,passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

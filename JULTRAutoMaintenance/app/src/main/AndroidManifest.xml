@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permisson.READ_GSERVICES" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JULTRAutoMaintenance">
         <activity
-            android:name=".VideoTutorials"
+            android:name=".VideoTuts"
             android:exported="true"
             android:label="@string/title_activity_video_tutorials"
             android:theme="@style/Theme.JULTRAutoMaintenance.NoActionBar" />
@@ -31,7 +32,7 @@
             android:name=".ManageVehicleActivity"
             android:exported="true"
             android:label="@string/title_activity_manage_vehicle"
-            android:theme="@style/Theme.JULTRAutoMaintenance.NoActionBar" />
+            android:theme="@style/Theme.JULTRAutoMaintenance"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -56,6 +57,7 @@
             android:name=".HomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

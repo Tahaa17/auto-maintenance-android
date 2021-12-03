@@ -33,6 +33,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.jultrautomaintenance.databinding.ActivityMapsBinding;
 
+import java.util.concurrent.Executor;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
 {
 
@@ -46,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private int ProximityRadius = 10000;
 
 
-
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        extras=getIntent().getExtras();
+
+
     }
 
 
@@ -71,6 +76,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     {
         Object transferData[] = new Object[2];
         GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
+        FindFirst findFirst = new FindFirst();
+
 
 
         switch (v.getId())
@@ -83,12 +90,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 transferData[1] = url;
 
                 getNearbyPlaces.execute(transferData);
-                Toast.makeText(this, "Searching for Nearby Hospitals...", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "Showing Nearby Hospitals...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Searching for Nearby Mechanic...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Showing Nearby Mechanic...", Toast.LENGTH_SHORT).show();
                 break;
 
+            case R.id.location_search:
+                mMap.clear();
+                url = getUrl(latitide, longitude, "mechanic");
+                transferData[0] = mMap;
+                transferData[1] = url;
 
-
+                findFirst.execute(transferData);
+                Toast.makeText(this, "Searching for Nearby Mechanic...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Showing Nearby Mechanic...", Toast.LENGTH_SHORT).show();
+                break;
 
 
         }
@@ -98,14 +113,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private String getUrl(double latitide, double longitude, String nearbyPlace)
     {
-        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googleURL.append("location=" + latitide + "," + longitude);
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/textsearch/json?");
+        googleURL.append("query=" + nearbyPlace);
+        googleURL.append("&location=" + latitide + "," + longitude);
         googleURL.append("&radius=" + ProximityRadius);
-        googleURL.append("&type=" + nearbyPlace);
         googleURL.append("&sensor=true");
-        googleURL.append("&key=" + "AIzaSyC9R8Psp_wl1IAa_kVSyx11ou2ycUFKL0M");
+        googleURL.append("&key=" + "AIzaSyBDH5jIZn7zuTUg4RmgUus1LUp7mte6Sj8");
 
         Log.d("GoogleMapsActivity", "url = " + googleURL.toString());
+
 
         return googleURL.toString();
     }
@@ -120,6 +136,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
 
             mMap.setMyLocationEnabled(true);
+        }
+        if(extras!=null){
+            if (extras.getBoolean("ForClosestMechanic")==true){
+                onClick(findViewById(R.id.location_search));
+
+            }
         }
 
     }
@@ -212,7 +234,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentUserLocationMarker = mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(8));
 
         if (googleApiClient != null)
         {

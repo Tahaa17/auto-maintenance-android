@@ -104,5 +104,24 @@
     <string name="welcome">Welcome</string>
     <string name="login_for_your_car_health">Login for your car health</string>
     <string name="password">Password</string>
-    <string name="title_activity_video_tutorials">VideoTutorials</string>
+    <string name="title_activity_video_tutorials">VideoTuts</string>
+    <string name="hi">Hi</string>
+    <string name="simple_video_guides">Simple Video Guides</string>
+    <string name="checking_engine_oil_level">Checking Engine Oil Level</string>
+    <string name="checking_changing_windsheild_washer_fluid">Checking/Changing Windshield Washer Fluid</string>
+    <string name="checking_tire_tread">Checking Tire Tread</string>
+    <string name="replacing_windshield_wipers">Replacing Windshield Wipers</string>
+    <string name="replace_engine_air_filter">Replace Engine Air Filter</string>
+    <string name="replace_your_cabin_air_filter">Replace Your Cabin Air Filter</string>
+    <string name="changing_engine_coolant">Changing Engine Coolant</string>
+    <string name="changing_engine_oil">Changing Engine Oil</string>
+    <string name="changing_car_battery">Changing Car Battery</string>
+    <string name="replacing_fuse">Replacing Fuse</string>
+    <string name="changing_car_tires">Changing Car Tires</string>
+    <string name="changing_flat_tire">Changing Flat Tire</string>
+    <string name="changing_rotors_and_pads">Changing Rotors and Pads</string>
+    <string name="break_fluid_flush">Break Fluid Flush</string>
+    <string name="replacing_spark_plugs">Replacing Spark Plugs</string>
+    <string name="rotating_car_tires">Rotating Car Tires</string>
+    <string name="changing_car_lights">Changing Car Lights</string>
 </resources>

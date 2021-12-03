@@ -10,13 +10,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <EditText
+
+        <Button
             android:id="@+id/location_search"
             android:layout_width="320dp"
             android:layout_height="50dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:onClick="onClick"/>
+            android:layout_alignParentTop="true"
+            android:onClick="onClick" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="50dp"

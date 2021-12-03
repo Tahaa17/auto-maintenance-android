@@ -45,15 +45,12 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtube_player_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:autoPlay="true"
-        app:layout_anchor="@+id/youtube_player_view"
-        app:layout_anchorGravity="bottom|center"
-        app:showFullScreenButton="true"
-        app:showVideoDuration="true"
-        app:videoId="dQw4w9WgXcQ" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:translationX="160dp"
+        android:translationY="200dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
