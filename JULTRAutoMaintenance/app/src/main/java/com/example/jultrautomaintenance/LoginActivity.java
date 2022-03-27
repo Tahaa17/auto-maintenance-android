@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(v->registerMethod());
         mAuth=FirebaseAuth.getInstance();
     }
-
+    //this starts the activity for the register class
     public void registerMethod(){
         startActivity(new Intent(this,RegisterActivity.class));
     }
