@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         String emailText = email.getText().toString().trim();
         String passwordText = password.getText().toString().trim();
 
-        //checking to see if email portion is filled in
+        //checking to see if email portion is filled
         if(emailText.isEmpty())
         {
             email.setError("Email cannot be empty!");
